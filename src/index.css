@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #FDFAF5;
+  --color-surface: #F2E9D8;
+  --color-card: #EAE0CC;
+  --color-gold: #B8922F;
+  --color-gold-bright: #D4A940;
+  --color-text: #1A0E06;
+  --color-text-muted: #7A5C46;
+
+  --font-inter: 'Inter', sans-serif;
+  --font-grotesk: 'Space Grotesk', sans-serif;
+}
+
+:root {
+  --bg: #FDFAF5;
+  --surface: #F2E9D8;
+  --card: #EAE0CC;
+  --gold: #B8922F;
+  --gold-bright: #D4A940;
+  --gold-glow: rgba(184, 146, 47, 0.28);
+  --gold-soft: rgba(184, 146, 47, 0.1);
+  --gold-border: rgba(184, 146, 47, 0.22);
+  --text: #1A0E06;
+  --text-muted: #7A5C46;
+  --text-light: #A8866E;
+  --brown-dark: #3D1F0F;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 40px var(--gold-glow), 0 4px 16px rgba(184,146,47,0.25); }
+  50%       { box-shadow: 0 0 70px rgba(184,146,47,0.4), 0 4px 24px rgba(184,146,47,0.35); }
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── HERO OUTLINE TEXT ─── */
+.hero-outline {
+  -webkit-text-stroke: 2px var(--gold);
+  color: transparent;
+}
+
+/* ─── LEARN CARD ─── */
+.learn-card-hover {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.learn-card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 3px; width: 0;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+.learn-card-hover:hover::before { width: 100%; }
+.learn-card-hover:hover { background: #DDD0B8 !important; }
+
+/* ─── FAQ ACCORDION ─── */
+.faq-answer {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+}
+.faq-answer.open {
+  opacity: 1;
+}
+
+/* ─── UTILITY ANIMATION CLASSES ─── */
+.animate-fade-up   { animation: fadeUp 0.8s ease both; }
+.animate-float-in  { animation: floatIn 1s ease both; }
+.cta-pulse         { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-section .hero-right {
+    min-height: 40vh;
+    order: -1;
+  }
+  .hero-section .float-tag {
+    display: none !important;
+  }
+
+  .services-3-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .for-who-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .phases-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .registro-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .for-who-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
