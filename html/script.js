@@ -1,6 +1,6 @@
 /* ============================================
    jazminamonteiro.com — script.js
-   Navbar · Sticky CTA · Modal · Form → Webhook
+   Navbar · Sticky CTA · Dual Forms → Webhook
    ============================================ */
 
 (function () {
@@ -56,56 +56,13 @@
   window.addEventListener('scroll', updateStickyCta, { passive: true });
   updateStickyCta();
 
-  /* --- Modal --- */
-  var modal = document.getElementById('modal');
-  var modalClose = document.getElementById('modalClose');
-  var modalFormWrap = document.getElementById('modalForm');
-  var modalSuccess = document.getElementById('modalSuccess');
+  /* --- Dual Form Setup (Hero + Bottom) → GHL Webhook --- */
+  function setupForm(formId, formWrapId, successId) {
+    var form = document.getElementById(formId);
+    var formWrap = document.getElementById(formWrapId);
+    var successEl = document.getElementById(successId);
+    if (!form) return;
 
-  function openModal() {
-    if (!modal) return;
-    modal.classList.add('active');
-    document.body.classList.add('modal-open');
-    // Focus first input for accessibility
-    var firstInput = modal.querySelector('input');
-    if (firstInput) setTimeout(function () { firstInput.focus(); }, 400);
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove('active');
-    document.body.classList.remove('modal-open');
-  }
-
-  // Open modal on any .cta-modal click
-  document.querySelectorAll('.cta-modal').forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      e.preventDefault();
-      openModal();
-    });
-  });
-
-  // Close modal — X button
-  if (modalClose) {
-    modalClose.addEventListener('click', closeModal);
-  }
-
-  // Close modal — overlay click
-  if (modal) {
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal) closeModal();
-    });
-  }
-
-  // Close modal — Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  /* --- Registration Form → GHL Webhook --- */
-  var form = document.getElementById('registroForm');
-
-  if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -127,9 +84,9 @@
         return;
       }
 
-      clearErrors();
+      clearErrors(form);
 
-      var submitBtn = form.querySelector('.form-submit');
+      var submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Enviando...';
@@ -145,27 +102,34 @@
           phone: phone.value.trim()
         }).toString()
       })
-        .then(function () { showFormSuccess(); })
-        .catch(function () { showFormSuccess(); });
+        .then(function () { showSuccess(formWrap, successEl); })
+        .catch(function () { showSuccess(formWrap, successEl); });
     });
   }
 
-  function showFormSuccess() {
-    if (modalFormWrap) modalFormWrap.style.display = 'none';
-    if (modalSuccess) modalSuccess.style.display = 'block';
+  function showSuccess(formWrap, successEl) {
+    if (formWrap) formWrap.style.display = 'none';
+    if (successEl) successEl.style.display = 'flex';
 
     setTimeout(function () {
       window.location.href = 'registro.html';
     }, 2500);
   }
 
+  // Hero form (mini)
+  setupForm('heroForm', 'heroFormWrap', 'heroSuccess');
+
+  // Bottom form (full)
+  setupForm('registroForm', 'regFormCard', 'regSuccess');
+
+  /* --- Helpers --- */
   function isValidEmail(val) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
   }
 
   function showFieldError(field, message) {
     if (!field) return;
-    clearErrors();
+    clearErrors(field.closest('form'));
     field.style.borderColor = '#e55';
     field.focus();
 
@@ -176,17 +140,18 @@
     field.parentNode.appendChild(err);
   }
 
-  function clearErrors() {
-    document.querySelectorAll('.field-error').forEach(function (el) {
+  function clearErrors(scope) {
+    var container = scope || document;
+    container.querySelectorAll('.field-error').forEach(function (el) {
       el.remove();
     });
-    document.querySelectorAll('.form-group input').forEach(function (el) {
+    container.querySelectorAll('input').forEach(function (el) {
       el.style.borderColor = '';
     });
   }
 
-  /* --- Smooth scroll (exclude modal triggers) --- */
-  document.querySelectorAll('a[href^="#"]:not(.cta-modal)').forEach(function (anchor) {
+  /* --- Smooth scroll for anchor links --- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       var target = document.querySelector(this.getAttribute('href'));
       if (target) {

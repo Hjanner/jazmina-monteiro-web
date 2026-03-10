@@ -303,6 +303,82 @@ a {
   animation: ctaPulse 2.5s ease-in-out infinite;
 }
 
+/* --- Hero Mini Form --- */
+.hero-form {
+  margin: 24px auto 0;
+  max-width: 380px;
+  width: 100%;
+}
+
+.hero-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-form input {
+  height: 48px;
+  padding: 0 16px;
+  background: rgba(26, 14, 6, 0.04);
+  border: 1px solid var(--gold-border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hero-form input::placeholder {
+  color: var(--text-light);
+}
+
+.hero-form input:focus {
+  border-color: var(--gold);
+  background: rgba(26, 14, 6, 0.07);
+}
+
+.hero-form-btn {
+  width: 100%;
+  min-height: 52px;
+  font-size: 15px;
+  animation: ctaPulse 2.5s ease-in-out infinite;
+}
+
+.hero-form-note {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* --- Inline Success State --- */
+.inline-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 20px;
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-top: 12px;
+}
+
+.inline-success-dark {
+  background: rgba(212, 169, 64, 0.1);
+  border-color: rgba(212, 169, 64, 0.25);
+  color: var(--gold-bright);
+  margin-top: 16px;
+}
+
 .social-proof {
   font-size: 13px;
   color: var(--text-light);
@@ -1056,6 +1132,10 @@ body.has-sticky-cta .footer {
 
   .hero-content {
     text-align: left;
+  }
+
+  .hero-form {
+    margin: 24px 0 0;
   }
 
   .hero-cta-wrap {
