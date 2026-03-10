@@ -48,6 +48,10 @@ body {
   overflow-x: hidden;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -137,6 +141,19 @@ a {
 
 .btn-full {
   width: 100%;
+}
+
+.btn-dark {
+  background: var(--text);
+  color: var(--white);
+  font-size: 13px;
+  min-height: 44px;
+  padding: 0 22px;
+}
+
+.btn-dark:hover {
+  background: var(--brown-dark);
+  transform: translateY(-1px);
 }
 
 /* --- Navbar --- */
@@ -848,6 +865,147 @@ body.has-sticky-cta .footer {
   padding-bottom: 90px;
 }
 
+/* --- CTA Band --- */
+.cta-band {
+  background: var(--gold);
+  padding: 20px;
+}
+
+.cta-band-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.cta-band-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* --- Final CTA Section --- */
+.final-cta {
+  background: var(--brown-dark);
+  padding: 64px 20px;
+  text-align: center;
+  color: var(--white);
+}
+
+.final-cta .badge {
+  color: var(--gold-bright);
+  border-color: rgba(212, 169, 64, 0.3);
+  background: rgba(212, 169, 64, 0.08);
+}
+
+.final-cta h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(30px, 7vw, 48px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+/* --- Modal --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  position: relative;
+  background: var(--brown-dark);
+  border: 1px solid rgba(212, 169, 64, 0.2);
+  border-radius: 20px 20px 0 0;
+  padding: 32px 24px 40px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background: rgba(253, 250, 245, 0.08);
+  border: 1px solid rgba(253, 250, 245, 0.15);
+  border-radius: 50%;
+  color: rgba(253, 250, 245, 0.6);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: rgba(253, 250, 245, 0.15);
+  color: var(--white);
+}
+
+.modal-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.modal-success .success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(212, 169, 64, 0.12);
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--gold-bright);
+  margin: 0 auto 16px;
+}
+
+.modal-success h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.modal-success p {
+  font-size: 15px;
+  color: rgba(253, 250, 245, 0.65);
+  line-height: 1.6;
+}
+
 /* ============================================
    DESKTOP MEDIA QUERY (min-width: 768px)
    ============================================ */
@@ -1014,6 +1172,37 @@ body.has-sticky-cta .footer {
     margin: 0 auto;
   }
 
+  /* CTA Band — desktop */
+  .cta-band {
+    padding: 24px 48px;
+  }
+
+  .cta-band-inner {
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  /* Final CTA — desktop */
+  .final-cta {
+    padding: 100px 48px;
+  }
+
+  /* Modal — desktop centered */
+  .modal-overlay {
+    align-items: center;
+  }
+
+  .modal-content {
+    max-width: 440px;
+    border-radius: 20px;
+    transform: translateY(20px) scale(0.97);
+  }
+
+  .modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1);
+  }
+
   /* Footer */
   .footer {
     padding: 48px 48px;
@@ -1027,7 +1216,7 @@ body.has-sticky-cta .footer {
   .section {
     padding: 120px 60px;
   }
-  .registro-section {
+  .final-cta {
     padding: 120px 60px;
   }
 }
