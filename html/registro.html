@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Registro Confirmado! — Jazmina Monteiro Masterclass</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>" />
+
+  <style>
+    /* Design tokens */
+    :root {
+      --bg: #FDFAF5;
+      --gold: #B8922F;
+      --gold-bright: #D4A940;
+      --gold-glow: rgba(184,146,47,0.28);
+      --gold-soft: rgba(184,146,47,0.10);
+      --gold-border: rgba(184,146,47,0.22);
+      --text: #1A0E06;
+      --text-muted: #7A5C46;
+      --text-light: #A8866E;
+      --brown-dark: #3D1F0F;
+      --surface: #F2E9D8;
+      --card: #EAE0CC;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--brown-dark);
+      color: #FDFAF5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(253,250,245,0.55);
+      margin-bottom: 48px;
+    }
+
+    .success-wrap {
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(212,169,64,0.1);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 28px;
+      animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      border: 1px solid rgba(212,169,64,0.3);
+      background: rgba(212,169,64,0.08);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(30px, 7vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: #FDFAF5;
+      margin-bottom: 16px;
+    }
+
+    .sub {
+      font-size: 16px;
+      color: rgba(253,250,245,0.65);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .event-card {
+      background: rgba(253,250,245,0.04);
+      border: 1px solid rgba(212,169,64,0.2);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      margin-bottom: 28px;
+    }
+
+    .event-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(253,250,245,0.06);
+      text-align: left;
+    }
+
+    .event-row:last-child {
+      border-bottom: none;
+    }
+
+    .event-icon {
+      font-size: 18px;
+      color: var(--gold-bright);
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .event-label {
+      font-size: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(253,250,245,0.45);
+      margin-bottom: 2px;
+    }
+
+    .event-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(253,250,245,0.9);
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(253,250,245,0.5);
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(253,250,245,0.12);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-top: 8px;
+    }
+
+    .btn-back:hover {
+      color: rgba(253,250,245,0.85);
+      border-color: rgba(253,250,245,0.25);
+    }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(253,250,245,0.07);
+    }
+
+    .social-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold-bright);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+
+    .social-link:hover { opacity: 0.75; }
+
+    footer {
+      margin-top: 48px;
+      font-size: 12px;
+      color: rgba(253,250,245,0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">JAZMINA MONTEIRO</div>
+
+  <div class="success-wrap">
+
+    <div class="success-icon" aria-hidden="true">✓</div>
+
+    <div class="badge">◆ REGISTRO CONFIRMADO</div>
+
+    <h1>¡Ya tienes tu lugar reservado!</h1>
+
+    <p class="sub">
+      Te enviamos los detalles de acceso al email que registraste.<br />
+      Revisa tu bandeja de entrada y también el spam, por las dudas.
+    </p>
+
+    <div class="event-card" role="region" aria-label="Detalles del evento">
+      <div class="event-row">
+        <span class="event-icon" aria-hidden="true">◆</span>
+        <div>
+          <div class="event-label">Evento</div>
+          <div class="event-value">Masterclass: Aprende a Crecer con IA</div>
+        </div>
+      </div>
+      <div class="event-row">
+        <span class="event-icon" aria-hidden="true">📅</span>
+        <div>
+          <div class="event-label">Fecha</div>
+          <div class="event-value">Martes 4 de mayo de 2026</div>
+        </div>
+      </div>
+      <div class="event-row">
+        <span class="event-icon" aria-hidden="true">🕗</span>
+        <div>
+          <div class="event-label">Hora</div>
+          <div class="event-value">8:00 PM EST · 7:00 PM CST · 9:00 PM ARG</div>
+        </div>
+      </div>
+      <div class="event-row">
+        <span class="event-icon" aria-hidden="true">💻</span>
+        <div>
+          <div class="event-label">Formato</div>
+          <div class="event-value">100% en línea · No hay replay</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/" class="btn-back" aria-label="Volver a la página principal">
+      ← Volver al inicio
+    </a>
+
+    <div class="social-row" role="navigation" aria-label="Redes sociales">
+      <a href="https://instagram.com/jazminamonteiro" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Seguir en Instagram">
+        Instagram →
+      </a>
+      <a href="https://linkedin.com/in/jazminamonteiro" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Conectar en LinkedIn">
+        LinkedIn →
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Jazmina Monteiro · Miami, FL · Latinoamérica · España
+  </footer>
+
+</body>
+</html>
