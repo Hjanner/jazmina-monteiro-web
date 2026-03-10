@@ -39,53 +39,13 @@
   </nav>
 
   <!-- ==========================================
-       HERO + Mini Form
+       HERO — Dark, image-first on mobile
   =========================================== -->
   <section class="hero" id="hero" aria-label="Sección principal">
     <div class="hero-inner">
 
-      <div class="hero-content">
-        <div class="badge">◆ MASTERCLASS GRATUITA</div>
-
-        <h1>
-          <span class="outline">APRENDE A</span><br />
-          <span class="gold">CRECER CON IA</span><br />
-          EN 60 MINUTOS
-        </h1>
-
-        <p class="hero-sub">
-          Implementa IA en tu negocio — sin técnicos, sin herramientas caras.
-        </p>
-
-        <div class="hero-date">
-          <span class="dot">◆</span>
-          Martes 4 de mayo &nbsp;·&nbsp; 8:00 PM EST &nbsp;·&nbsp; 100% Gratuita
-        </div>
-
-        <!-- Mini form -->
-        <div class="hero-form" id="heroFormWrap">
-          <form id="heroForm" novalidate>
-            <input type="text" name="nombre" placeholder="Tu nombre completo" autocomplete="name" required />
-            <input type="email" name="email" placeholder="tu@email.com" autocomplete="email" required />
-            <input type="tel" name="phone" placeholder="+1 305 000 0000" autocomplete="tel" required />
-            <button type="submit" class="btn btn-primary hero-form-btn">
-              → QUIERO MI LUGAR GRATIS
-            </button>
-          </form>
-          <p class="hero-form-note">100% gratuita · Sin tarjeta · Sin spam</p>
-        </div>
-
-        <div id="heroSuccess" class="inline-success" style="display: none;">
-          ✓ &nbsp;¡Registrado! Te enviamos los detalles al email.
-        </div>
-
-        <p class="social-proof" style="margin-top: 14px;">
-          <span class="dot">◆</span>
-          Ya se registraron <strong id="urgencyCount">847</strong> personas
-        </p>
-      </div>
-
-      <div class="hero-image-wrap" aria-hidden="true">
+      <!-- Image: first on mobile (full-width + gradient), right column on desktop -->
+      <div class="hero-image-wrap">
         <img
           src="https://buildflow.isayahagency.com/wp-content/uploads/2026/03/Gemini_Generated_Image_l4rxfkl4rxfkl4rx.png"
           alt="Jazmina Monteiro — Estrategia, IA y Automatización"
@@ -103,6 +63,48 @@
             ROI promedio
           </div>
         </div>
+      </div>
+
+      <!-- Content: below image on mobile, left column on desktop -->
+      <div class="hero-content">
+        <div class="badge badge-dark">◆ MASTERCLASS GRATUITA</div>
+
+        <h1>
+          <span class="outline">APRENDE A</span><br />
+          <span class="gold">CRECER CON IA</span><br />
+          EN 60 MINUTOS
+        </h1>
+
+        <p class="hero-sub">
+          Implementa IA en tu negocio — sin técnicos, sin herramientas caras.
+        </p>
+
+        <div class="hero-date">
+          <span class="dot">◆</span>
+          Martes 4 de mayo &nbsp;·&nbsp; 8:00 PM EST &nbsp;·&nbsp; 100% Gratuita
+        </div>
+
+        <!-- Mini form (dark-themed) -->
+        <div class="hero-form" id="heroFormWrap">
+          <form id="heroForm" novalidate>
+            <input type="text" name="nombre" placeholder="Tu nombre completo" autocomplete="name" required />
+            <input type="email" name="email" placeholder="tu@email.com" autocomplete="email" required />
+            <input type="tel" name="phone" placeholder="+1 305 000 0000" autocomplete="tel" required />
+            <button type="submit" class="btn btn-primary hero-form-btn">
+              → QUIERO MI LUGAR GRATIS
+            </button>
+          </form>
+          <p class="hero-form-note">100% gratuita · Sin tarjeta · Sin spam</p>
+        </div>
+
+        <div id="heroSuccess" class="inline-success inline-success-dark" style="display: none;">
+          ✓ &nbsp;¡Registrado! Te enviamos los detalles al email.
+        </div>
+
+        <p class="social-proof" style="margin-top: 14px;">
+          <span class="dot">◆</span>
+          Ya se registraron <strong id="urgencyCount">847</strong> personas
+        </p>
       </div>
 
     </div>
