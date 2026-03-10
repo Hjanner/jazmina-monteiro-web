@@ -1176,6 +1176,7 @@ body.has-sticky-cta .footer {
     height: auto;
     min-height: auto;
     max-height: none;
+    overflow: visible;
     border-radius: var(--radius-lg);
     box-shadow: 0 0 80px rgba(184, 146, 47, 0.15), 0 8px 40px rgba(0, 0, 0, 0.3);
   }
@@ -1231,12 +1232,15 @@ body.has-sticky-cta .footer {
     top: 30px;
     left: -20px;
     animation: floatUp 4s ease-in-out infinite;
+    z-index: 99;
+
   }
 
   .float-tag-2 {
     bottom: 40px;
     right: -15px;
     animation: floatUp 4s ease-in-out infinite 1.5s;
+    z-index: 99;
   }
 
   @keyframes floatUp {
