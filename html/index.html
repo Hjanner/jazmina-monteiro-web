@@ -33,8 +33,7 @@
 
     <div class="navbar-links" aria-label="Links de navegación">
       <a href="#aprenderás">Aprenderás</a>
-      <a href="#testimonios">Testimonios</a>
-      <a href="#faq">FAQ</a>
+      <a href="#para-quien">Para quién</a>
     </div>
 
     <a href="#registro" class="navbar-cta" aria-label="Registrarse en la masterclass">
@@ -186,59 +185,6 @@
   </section>
 
   <!-- ==========================================
-       TESTIMONIOS — Prueba social
-  =========================================== -->
-  <section class="section section-surface" id="testimonios" aria-labelledby="testimonios-title">
-    <div class="container">
-      <div class="badge">◆ RESULTADOS REALES</div>
-      <h2 id="testimonios-title">Resultados reales de empresas reales</h2>
-
-      <div class="testimonials-grid" role="list">
-
-        <article class="testimonial-card" role="listitem">
-          <p class="testimonial-quote">
-            Automatizamos el onboarding y redujimos el tiempo de respuesta de 48 horas a menos de 2 horas. Sin contratar a nadie nuevo.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar" aria-hidden="true">ML</div>
-            <div>
-              <div class="author-name">María López</div>
-              <div class="author-role">Directora de Operaciones · Startup SaaS</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="testimonial-card" role="listitem">
-          <p class="testimonial-quote">
-            En 6 semanas triplicamos las consultas calificadas. No hubo magia — fue implementar el flujo exacto que Jazmina nos mostró.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar" aria-hidden="true">CM</div>
-            <div>
-              <div class="author-name">Carlos Mendes</div>
-              <div class="author-role">CEO · Agencia de Marketing Digital</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="testimonial-card" role="listitem">
-          <p class="testimonial-quote">
-            Jazmina entiende el negocio primero. No vende tecnología por vender. La estrategia cambió cómo operamos para siempre.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar" aria-hidden="true">AS</div>
-            <div>
-              <div class="author-name">Andrea Salinas</div>
-              <div class="author-role">Fundadora · Consultora de RRHH</div>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
        REGISTRO — Form principal
   =========================================== -->
   <section class="registro-section" id="registro" aria-labelledby="registro-title">
@@ -270,149 +216,29 @@
         </ul>
       </div>
 
-      <!-- Right: Form -->
-      <div>
-        <!-- Form card -->
-        <div class="form-card" id="formCard">
-          <form id="registroForm" novalidate aria-label="Formulario de registro a la masterclass">
-            <div class="form-group">
-              <label for="nombre">Tu nombre</label>
-              <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                placeholder="Ej: María García"
-                autocomplete="name"
-                required
-                aria-required="true"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="tu@empresa.com"
-                autocomplete="email"
-                required
-                aria-required="true"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="whatsapp">WhatsApp (con código de país)</label>
-              <input
-                type="tel"
-                id="whatsapp"
-                name="whatsapp"
-                placeholder="+1 305 000 0000"
-                autocomplete="tel"
-                required
-                aria-required="true"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="desafio">Tu mayor desafío ahora mismo</label>
-              <select id="desafio" name="desafio" required aria-required="true">
-                <option value="" disabled selected>Selecciona una opción...</option>
-                <option value="captar-clientes">Captar más clientes calificados</option>
-                <option value="automatizar">Automatizar procesos repetitivos</option>
-                <option value="contenido">Crear contenido de forma consistente</option>
-                <option value="escalar">Escalar sin contratar más personal</option>
-                <option value="competencia">Diferenciarse de la competencia con IA</option>
-                <option value="otro">Otro desafío</option>
-              </select>
-            </div>
-
-            <button type="submit" class="form-submit" aria-label="Enviar registro a la masterclass">
-              → QUIERO MI ACCESO GRATUITO
-            </button>
-
-            <p style="font-size:12px; color:rgba(253,250,245,0.35); text-align:center; margin-top:14px; line-height:1.5;">
-              Tu información es 100% segura. Sin spam. Puedes cancelar cuando quieras.
-            </p>
-          </form>
-        </div>
-
-        <!-- Success state -->
-        <div class="form-card form-success" id="formSuccess" role="status" aria-live="polite">
-          <div class="success-icon" aria-hidden="true">✓</div>
-          <h3>¡Listo! Estás registrado</h3>
-          <p>Te enviamos los detalles al email. Revisa tu bandeja (y spam, por si acaso).<br /><br />Nos vemos el martes 4 de mayo a las 8:00 PM EST.</p>
-        </div>
+      <!-- Right: GHL Form -->
+      <div class="form-card" style="padding: 0; overflow: hidden; background: transparent; border: none;">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/NUZtsHkBzr0xpLiuNTip"
+          style="width:100%;height:925px;border:none;border-radius:12px;display:block;"
+          id="inline-NUZtsHkBzr0xpLiuNTip"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Form 0"
+          data-height="925"
+          data-layout-iframe-id="inline-NUZtsHkBzr0xpLiuNTip"
+          data-form-id="NUZtsHkBzr0xpLiuNTip"
+          title="Registro Masterclass"
+          loading="lazy"
+        ></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ==========================================
-       FAQ
-  =========================================== -->
-  <section class="section" id="faq" aria-labelledby="faq-title">
-    <div class="container">
-      <div class="badge">◆ PREGUNTAS FRECUENTES</div>
-      <h2 id="faq-title">Resolvemos tus dudas</h2>
-
-      <div class="faq-list" role="list">
-
-        <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
-            ¿Necesito conocimientos técnicos para aplicar lo que aprenda?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" id="faq-answer-1" role="region">
-            <div class="faq-answer-inner">
-              No. Esta masterclass está diseñada para dueños de negocio y directivos, no para programadores. Sin código, sin tecnicismos. Si sabes usar WhatsApp, puedes implementar lo que enseñamos.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
-            ¿Es realmente gratuita? ¿Hay algún truco?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" id="faq-answer-2" role="region">
-            <div class="faq-answer-inner">
-              Sí. 100% gratuita. Sin tarjeta de crédito. Sin trampa. Al final te presentamos el programa Rebuild Pro™ por si quieres ir más profundo, pero no hay ninguna obligación de compra.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
-            ¿Qué pasa si no puedo en esa fecha?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" id="faq-answer-3" role="region">
-            <div class="faq-answer-inner">
-              La masterclass es 100% en vivo y no habrá replay disponible. Si tienes un conflicto de agenda, regístrate igual — te notificaremos de la próxima fecha disponible y serás el primero en la lista de espera.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
-            ¿En cuánto tiempo veo resultados al implementar lo que enseñan?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" id="faq-answer-4" role="region">
-            <div class="faq-answer-inner">
-              La mayoría de nuestros clientes ven los primeros resultados medibles en 3 a 5 semanas de implementación. Algunos flujos de automatización se pueden activar en menos de 48 horas.
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="#registro" class="btn btn-primary" style="display: inline-flex;">
-          → RESERVAR MI LUGAR GRATIS
-        </a>
-      </div>
     </div>
   </section>
 
