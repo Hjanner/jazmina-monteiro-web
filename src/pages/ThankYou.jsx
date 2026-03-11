@@ -1,197 +1,155 @@
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import { useState, useEffect } from 'react'
+
+/* ══ REEMPLAZAR con el link real del grupo VIP de WhatsApp ══ */
+const WA_GROUP_LINK = 'https://chat.whatsapp.com/LINK_GRUPO_VIP'
 
 const checkItems = [
-  'Guarda la fecha en tu calendario para no olvidarlo.',
   'Busca el correo de confirmación (revisa spam si no lo ves).',
-  'Agrega a Jazmina Monteiro en Instagram para recibir recordatorios antes del evento.',
-  'Comparte con alguien más que lo necesite — los cupos son limitados.',
-]
-
-const learnItems = [
-  'Cómo dejar de ser el cuello de botella de tu propio negocio.',
-  'El sistema de ventas y automatizaciones con IA que usan negocios que ya facturan.',
-  'Cómo pasar de operador agotado a director estratégico de tu empresa.',
-  'Las claves del marketing que genera demanda constante sin depender de ti.',
-  'Cómo escalar sin duplicar esfuerzo ni contratar de más.',
+  'Guarda la fecha: 4 de mayo, 8:00 p.m. EST.',
+  'Únete al grupo VIP de WhatsApp para recibir el enlace del webinar.',
 ]
 
 export default function ThankYou() {
-  const handleShare = () => {
-    const url = window.location.origin
-    if (navigator.share) {
-      navigator.share({ title: 'Rebuild Pro — Masterclass Gratuita', url }).catch(() => {})
-    } else {
-      navigator.clipboard.writeText(url)
-        .then(() => alert('¡Enlace copiado al portapapeles!'))
-        .catch(() => {})
-    }
-  }
+  const [countdown, setCountdown] = useState(5)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(interval)
+          window.location.href = WA_GROUP_LINK
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <>
-      <Navbar />
-      <div style={{ minHeight: '100vh', background: 'var(--black)', paddingTop: '68px' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--black)', display: 'flex', alignItems: 'center' }}>
+      <div style={{
+        maxWidth: '480px',
+        margin: '0 auto',
+        padding: 'clamp(32px,5vw,56px) clamp(20px,5vw,40px)',
+        width: '100%',
+      }}>
+
+        {/* ── Header ── */}
         <div style={{
-          maxWidth: '680px',
-          margin: '0 auto',
-          padding: 'clamp(40px,6vw,72px) clamp(20px,5vw,40px)',
+          textAlign: 'center',
+          marginBottom: '28px',
+          paddingBottom: '24px',
+          borderBottom: '1px solid var(--gold-border)',
         }}>
-
-          {/* ── Header ── */}
           <div style={{
-            textAlign: 'center',
-            marginBottom: '40px',
-            paddingBottom: '36px',
-            borderBottom: '1px solid var(--gold-border)',
+            width: '52px',
+            height: '52px',
+            background: 'var(--gold-soft)',
+            border: '2px solid var(--gold)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 16px',
+            fontSize: '22px',
+            color: 'var(--gold)',
+          }}>⚠</div>
+
+          <h1 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 700,
+            fontSize: 'clamp(20px, 4vw, 28px)',
+            letterSpacing: '-0.8px',
+            color: '#fff',
+            marginBottom: '10px',
+            lineHeight: 1.2,
           }}>
-            <div style={{
-              width: '56px',
-              height: '56px',
-              background: 'var(--gold-soft)',
-              border: '2px solid var(--gold)',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 20px',
-              fontSize: '22px',
-              color: 'var(--gold)',
-            }}>✓</div>
+            <span style={{ color: 'var(--gold)' }}>Solo un paso más</span>
+          </h1>
 
-            <h1 style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 700,
-              fontSize: 'clamp(22px, 4vw, 34px)',
-              letterSpacing: '-0.8px',
-              color: '#fff',
-              marginBottom: '12px',
-              lineHeight: 1.2,
-            }}>
-              ¡Ya tienes tu lugar en{' '}
-              <span style={{ color: 'var(--gold)' }}>Rebuild Pro!</span>
-            </h1>
-
-            <p style={{
-              fontSize: 'clamp(13px, 1.5vw, 15px)',
-              color: 'var(--white-muted)',
-              lineHeight: 1.7,
-              marginBottom: '20px',
-            }}>
-              Revisa tu correo — ahí te enviamos la confirmación y el enlace para el webinar.
-            </p>
-
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '8px 16px',
-              justifyContent: 'center',
-              fontSize: '13px',
-              color: 'var(--white-muted)',
-              fontFamily: "'Inter', sans-serif",
-            }}>
-              <span>📅 4 de mayo</span>
-              <span>🕒 8:00 p.m. (Miami – EST)</span>
-              <span>💻 Enlace en tu correo</span>
-            </div>
-          </div>
-
-          {/* ── Checklist ── */}
-          <div style={{ marginBottom: '32px' }}>
-            <p className="section-label">Antes del 4 de mayo, haz esto:</p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {checkItems.map((item, i) => (
-                <li key={i} style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '12px',
-                  fontSize: 'clamp(13px, 1.4vw, 14px)',
-                  color: 'var(--white-muted)',
-                  lineHeight: 1.65,
-                }}>
-                  <span style={{
-                    flexShrink: 0,
-                    width: '20px',
-                    height: '20px',
-                    background: 'var(--gold-soft)',
-                    border: '1px solid var(--gold-border)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '10px',
-                    color: 'var(--gold)',
-                    marginTop: '2px',
-                  }}>✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ── Lo que aprenderás ── */}
-          <div style={{
-            background: 'var(--black-card)',
-            border: '1px solid var(--gold-border)',
-            borderRadius: '8px',
-            padding: 'clamp(20px,3vw,32px)',
-            marginBottom: '24px',
+          <p style={{
+            fontSize: '14px',
+            color: 'var(--white-muted)',
+            lineHeight: 1.6,
           }}>
-            <p className="section-label">Lo que vas a descubrir el 4 de mayo:</p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {learnItems.map((item, i) => (
-                <li key={i} style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '10px',
-                  fontSize: 'clamp(13px, 1.3vw, 14px)',
-                  color: 'var(--white-muted)',
-                  lineHeight: 1.65,
-                }}>
-                  <span style={{ color: 'var(--gold)', flexShrink: 0, fontSize: '10px', marginTop: '5px' }}>◆</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ── Comparte ── */}
-          <div style={{
-            background: 'var(--black-soft)',
-            border: '1px solid var(--gold-border)',
-            borderRadius: '8px',
-            padding: 'clamp(20px,3vw,28px)',
-            textAlign: 'center',
-          }}>
-            <p style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 700,
-              fontSize: 'clamp(14px, 1.6vw, 16px)',
-              color: '#fff',
-              marginBottom: '8px',
-            }}>
-              ¿Conoces a alguien que también lo necesite?
-            </p>
-            <p style={{
-              fontSize: '13px',
-              color: 'var(--white-faint)',
-              lineHeight: 1.65,
-              marginBottom: '20px',
-            }}>
-              Comparte el enlace de registro. Los cupos son limitados y se están agotando.
-            </p>
-            <button
-              onClick={handleShare}
-              className="btn-gold"
-              style={{ margin: '0 auto' }}
-            >
-              COMPARTIR LA MASTERCLASS →
-            </button>
-          </div>
-
+            Revisa tu correo — ahí te enviamos la confirmación y el enlace para el webinar.
+          </p>
         </div>
+
+        {/* ── Redirect notice ── */}
+        <div style={{
+          background: 'rgba(232,201,106,0.08)',
+          border: '1px solid var(--gold-border)',
+          borderRadius: '8px',
+          padding: '16px 20px',
+          textAlign: 'center',
+          marginBottom: '24px',
+        }}>
+          <p style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 600,
+            fontSize: '13px',
+            color: 'var(--gold)',
+            marginBottom: '4px',
+          }}>
+            Redirigiendo al grupo VIP en {countdown}s…
+          </p>
+          <p style={{ fontSize: '12px', color: 'var(--white-faint)', fontFamily: "'Inter', sans-serif" }}>
+            Ahí recibirás el enlace del webinar y novedades exclusivas.
+          </p>
+        </div>
+
+        {/* ── Checklist ── */}
+        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
+          {checkItems.map((item, i) => (
+            <li key={i} style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '12px',
+              fontSize: '14px',
+              color: 'var(--white-muted)',
+              lineHeight: 1.6,
+            }}>
+              <span style={{
+                flexShrink: 0,
+                width: '22px',
+                height: '22px',
+                background: 'var(--gold-soft)',
+                border: '1px solid var(--gold-border)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '11px',
+                color: 'var(--gold)',
+                marginTop: '1px',
+              }}>⚠</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        {/* ── WhatsApp CTA ── */}
+        <div style={{ textAlign: 'center' }}>
+          <a
+            href={WA_GROUP_LINK}
+            className="btn-gold cta-pulse"
+            style={{ display: 'inline-flex', justifyContent: 'center', width: '100%', fontSize: '14px' }}
+          >
+            UNIRME AL GRUPO VIP →
+          </a>
+          <p style={{
+            fontSize: '11px',
+            color: 'var(--white-faint)',
+            fontFamily: "'Inter', sans-serif",
+            marginTop: '10px',
+          }}>
+            ⚡ Cupo limitado · 100% gratuito
+          </p>
+        </div>
+
       </div>
-      <Footer />
-    </>
+    </div>
   )
 }
