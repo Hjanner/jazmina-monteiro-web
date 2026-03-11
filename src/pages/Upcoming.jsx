@@ -1,5 +1,3 @@
-import Footer from '../components/Footer'
-
 export default function Upcoming() {
   return (
     <>
@@ -152,8 +150,6 @@ export default function Upcoming() {
         </div>
 
       </main>
-
-      <Footer />
     </>
   )
 }
