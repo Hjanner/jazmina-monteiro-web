@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { registroSchema } from '../utils/validation'
 
 const COUNTRY_CODES = [
@@ -26,6 +26,10 @@ const COUNTRY_CODES = [
 
 export default function RegisterForm() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const origin = searchParams.get('origin') || 'direct'
+  const keyword = searchParams.get('keyword') || 'general'
+  const temp = searchParams.get('temp') || 'frio'
   const [countryCode, setCountryCode] = useState('+1')
 
   const {
@@ -39,6 +43,9 @@ export default function RegisterForm() {
       name: data.nombre,
       email: data.email,
       phone: `${countryCode}${data.telefono}`,
+      origin,
+      keyword,
+      temp,
     }
     try {
       await fetch('https://services.leadconnectorhq.com/hooks/ii90EqqPaxlfzhF7czC1/webhook-trigger/c60e6642-9206-452e-a60e-0eb12a33f4a3', {
