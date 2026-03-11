@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
-export default function Navbar({ onOpenModal }) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -11,33 +11,40 @@ export default function Navbar({ onOpenModal }) {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  const scrollTo = (id) => {
+    setMobileOpen(false)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   const links = [
-    { label: 'Sobre mí', href: '#sobre-mi' },
-    { label: 'Servicios', href: '#servicios' },
-    { label: 'Rebuild Pro™', href: '#rebuild-pro' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'La Masterclass', id: 'aprende' },
+    { label: '¿Es para ti?', id: 'para-ti' },
+    { label: 'Regístrate', id: 'registro' },
   ]
 
+  const navBg = scrolled ? 'rgba(26,14,6,0.92)' : 'transparent'
+  const navBorder = scrolled ? '1px solid rgba(184,146,47,0.18)' : '1px solid transparent'
+  const linkColor = 'rgba(255,255,255,0.72)'
+  const linkHover = '#D4A940'
+
   return (
-    <nav
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(253,250,245,0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(14px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(184,146,47,0.15)' : '1px solid transparent',
-        boxShadow: scrolled ? '0 2px 24px rgba(26,14,6,0.06)' : 'none',
-      }}
-    >
+    <nav style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 1000,
+      transition: 'all 0.3s ease',
+      background: navBg,
+      backdropFilter: scrolled ? 'blur(14px)' : 'none',
+      borderBottom: navBorder,
+      boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.25)' : 'none',
+    }}>
       <div style={{
-        maxWidth: '1240px',
+        maxWidth: '1160px',
         margin: '0 auto',
-        padding: '0 40px',
-        height: '72px',
+        padding: '0 clamp(20px,4vw,40px)',
+        height: '68px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -46,9 +53,9 @@ export default function Navbar({ onOpenModal }) {
         <a href="/" style={{
           fontFamily: "'Inter', sans-serif",
           fontWeight: 800,
-          fontSize: '15px',
+          fontSize: '13px',
           letterSpacing: '2.5px',
-          color: 'var(--brown-dark)',
+          color: '#FFFFFF',
           textTransform: 'uppercase',
           textDecoration: 'none',
         }}>
@@ -56,49 +63,52 @@ export default function Navbar({ onOpenModal }) {
         </a>
 
         {/* Desktop links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }} className="hidden md:flex">
+        <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
           {links.map(l => (
-            <a key={l.href} href={l.href} style={{
+            <button key={l.id} onClick={() => scrollTo(l.id)} style={{
+              background: 'none',
+              border: 'none',
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: '13px',
               fontWeight: 500,
-              color: 'var(--text-muted)',
+              color: linkColor,
               letterSpacing: '0.3px',
+              cursor: 'pointer',
               transition: 'color 0.2s',
-              textDecoration: 'none',
+              padding: 0,
             }}
-            onMouseEnter={e => e.target.style.color = 'var(--gold)'}
-            onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+            onMouseEnter={e => e.target.style.color = linkHover}
+            onMouseLeave={e => e.target.style.color = linkColor}
             >
               {l.label}
-            </a>
+            </button>
           ))}
-          <button onClick={onOpenModal} style={{
+          <button onClick={() => scrollTo('registro')} style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontWeight: 600,
+            fontWeight: 700,
             fontSize: '12px',
-            letterSpacing: '0.8px',
+            letterSpacing: '1px',
             textTransform: 'uppercase',
-            color: '#FDFAF5',
-            background: 'var(--brown-dark)',
+            color: '#1A0E06',
+            background: '#D4A940',
             border: 'none',
-            padding: '10px 22px',
+            padding: '9px 20px',
             borderRadius: '4px',
             cursor: 'pointer',
             transition: 'all 0.2s',
           }}
-          onMouseEnter={e => { e.target.style.background = 'var(--gold)'; e.target.style.transform = 'translateY(-1px)' }}
-          onMouseLeave={e => { e.target.style.background = 'var(--brown-dark)'; e.target.style.transform = 'translateY(0)' }}
+          onMouseEnter={e => { e.target.style.background = '#B8922F'; e.target.style.transform = 'translateY(-1px)' }}
+          onMouseLeave={e => { e.target.style.background = '#D4A940'; e.target.style.transform = 'translateY(0)' }}
           >
-            Agenda una llamada →
+            Regístrate →
           </button>
         </div>
 
         {/* Hamburger */}
         <button
-          className="md:hidden"
+          className="nav-hamburger"
           onClick={() => setMobileOpen(!mobileOpen)}
-          style={{ background: 'none', border: 'none', color: 'var(--text)', cursor: 'pointer' }}
+          style={{ background: 'none', border: 'none', color: '#FFFFFF', cursor: 'pointer', display: 'none' }}
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -107,44 +117,53 @@ export default function Navbar({ onOpenModal }) {
       {/* Mobile menu */}
       {mobileOpen && (
         <div style={{
-          background: 'rgba(253,250,245,0.98)',
-          borderTop: '1px solid rgba(184,146,47,0.15)',
-          padding: '24px 30px',
+          background: 'rgba(20,10,3,0.97)',
+          borderTop: '1px solid rgba(184,146,47,0.18)',
+          padding: '20px 24px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '20px',
+          gap: '18px',
         }}>
           {links.map(l => (
-            <a key={l.href} href={l.href} style={{
+            <button key={l.id} onClick={() => scrollTo(l.id)} style={{
+              background: 'none',
+              border: 'none',
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: '14px',
               fontWeight: 500,
-              color: 'var(--text-muted)',
-              textDecoration: 'none',
-            }}
-            onClick={() => setMobileOpen(false)}
-            >
+              color: 'rgba(255,255,255,0.75)',
+              textAlign: 'left',
+              cursor: 'pointer',
+              padding: 0,
+            }}>
               {l.label}
-            </a>
+            </button>
           ))}
-          <button onClick={() => { onOpenModal(); setMobileOpen(false) }} style={{
+          <button onClick={() => scrollTo('registro')} style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontWeight: 600,
+            fontWeight: 700,
             fontSize: '13px',
-            letterSpacing: '0.8px',
+            letterSpacing: '1px',
             textTransform: 'uppercase',
-            color: '#FDFAF5',
-            background: 'var(--brown-dark)',
+            color: '#1A0E06',
+            background: '#D4A940',
             border: 'none',
-            padding: '14px 24px',
+            padding: '13px 22px',
             borderRadius: '4px',
             cursor: 'pointer',
             alignSelf: 'flex-start',
           }}>
-            Agenda una llamada →
+            Regístrate →
           </button>
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .nav-links { display: none !important; }
+          .nav-hamburger { display: block !important; }
+        }
+      `}</style>
     </nav>
   )
 }
