@@ -1,13 +1,33 @@
 import { Instagram, Linkedin } from 'lucide-react'
 
+const FOOTER_BG = 'https://buildflow.isayahagency.com/wp-content/uploads/2026/03/Gemini_Generated_Image_l4rxfkl4rxfkl4rx.png'
+
 export default function Footer() {
   return (
     <footer style={{
-      background: '#000',
+      position: 'relative',
       borderTop: '1px solid var(--gold-border)',
-      padding: 'clamp(32px,5vw,56px) clamp(20px,5vw,60px)',
+      padding: 'clamp(40px,6vw,72px) clamp(20px,5vw,60px)',
+      overflow: 'hidden',
     }}>
-      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
+      {/* Imagen de fondo */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: `url('${FOOTER_BG}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center bottom',
+        backgroundRepeat: 'no-repeat',
+      }} />
+
+      {/* Overlay oscuro para legibilidad */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.92) 100%)',
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1160px', margin: '0 auto' }}>
         <div style={{
           display: 'flex',
           alignItems: 'flex-start',
@@ -37,28 +57,6 @@ export default function Footer() {
               Estrategia, IA y automatización para empresarios que quieren crecer sin desgastarse.
             </p>
           </div>
-
-          {/* Links */}
-          <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {[
-              ['La Masterclass', '#aprende'],
-              ['¿Es para ti?', '#para-ti'],
-              ['Regístrate', '#registro'],
-            ].map(([label, href]) => (
-              <a key={href} href={href} style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: '13px',
-                color: 'var(--white-faint)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={e => e.target.style.color = 'var(--gold)'}
-              onMouseLeave={e => e.target.style.color = 'var(--white-faint)'}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
 
           {/* Social */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
