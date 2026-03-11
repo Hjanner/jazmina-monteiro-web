@@ -36,9 +36,9 @@ export default function RegisterForm() {
 
   const onSubmit = async (data) => {
     const payload = {
-      nombre: data.nombre,
+      name: data.nombre,
       email: data.email,
-      telefono: `${countryCode}${data.telefono}`,
+      phone: `${countryCode}${data.telefono}`,
     }
     try {
       await fetch('https://services.leadconnectorhq.com/hooks/ii90EqqPaxlfzhF7czC1/webhook-trigger/c60e6642-9206-452e-a60e-0eb12a33f4a3', {

@@ -23,7 +23,7 @@ export default function Registro() {
     fetch('https://services.leadconnectorhq.com/hooks/ii90EqqPaxlfzhF7czC1/webhook-trigger/c60e6642-9206-452e-a60e-0eb12a33f4a3', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ name: data.nombre, email: data.email, phone: data.whatsapp }),
     }).catch(() => {})
     setSuccess(true)
   }
