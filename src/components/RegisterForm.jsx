@@ -40,16 +40,13 @@ export default function RegisterForm() {
       email: data.email,
       telefono: `${countryCode}${data.telefono}`,
     }
-    const webhookUrl = import.meta.env.VITE_WEBHOOK_URL
-    if (webhookUrl) {
-      try {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        })
-      } catch (_) {}
-    }
+    try {
+      await fetch('https://services.leadconnectorhq.com/hooks/ii90EqqPaxlfzhF7czC1/webhook-trigger/c60e6642-9206-452e-a60e-0eb12a33f4a3', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+    } catch (_) {}
     navigate('/gracias')
   }
 

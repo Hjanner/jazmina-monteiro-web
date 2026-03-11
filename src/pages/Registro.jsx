@@ -20,14 +20,11 @@ export default function Registro() {
   })
 
   const onSubmit = (data) => {
-    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL
-    if (webhookUrl) {
-      fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      }).catch(() => {})
-    }
+    fetch('https://services.leadconnectorhq.com/hooks/ii90EqqPaxlfzhF7czC1/webhook-trigger/c60e6642-9206-452e-a60e-0eb12a33f4a3', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).catch(() => {})
     setSuccess(true)
   }
 
