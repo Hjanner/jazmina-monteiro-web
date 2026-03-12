@@ -53,7 +53,7 @@ export default function Upcoming() {
           position: 'relative',
           zIndex: 1,
         }}>
-          Jazminá{' '}
+          Jazmina{' '}
           <span style={{
             WebkitTextStroke: '1.5px var(--gold)',
             color: 'transparent',

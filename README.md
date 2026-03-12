@@ -1,6 +1,6 @@
 # jazminamonteiro.com
 
-Personal website for Jazminá Monteiro — Strategy, AI & Automation consulting.
+Personal website for Jazmina Monteiro — Strategy, AI & Automation consulting.
 
 ## Stack
 
