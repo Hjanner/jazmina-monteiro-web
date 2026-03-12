@@ -30,6 +30,7 @@ export default function RegisterForm() {
   const origin = searchParams.get('origin') || 'direct'
   const keyword = searchParams.get('keyword') || 'general'
   const temp = searchParams.get('temp') || 'frio'
+  const funnel = searchParams.get('funnel') || 'curso'
   const [countryCode, setCountryCode] = useState('+1')
 
   const {
@@ -46,6 +47,7 @@ export default function RegisterForm() {
       origin,
       keyword,
       temp,
+      funnel,
     }
     try {
       await fetch('https://services.leadconnectorhq.com/hooks/ii90EqqPaxlfzhF7czC1/webhook-trigger/c60e6642-9206-452e-a60e-0eb12a33f4a3', {
