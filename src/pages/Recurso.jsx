@@ -285,6 +285,38 @@ export default function Recurso() {
             {errors.telefono && <p style={errorStyle}>{errors.telefono.message}</p>}
           </div>
 
+          {/* Consentimiento */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <input
+                type="checkbox"
+                {...register('consentimiento')}
+                id="consentimiento-recurso"
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  marginTop: '2px',
+                  flexShrink: 0,
+                  accentColor: 'var(--gold)',
+                  cursor: 'pointer',
+                }}
+              />
+              <label
+                htmlFor="consentimiento-recurso"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: '12px',
+                  color: 'rgba(255,255,255,0.45)',
+                  lineHeight: 1.5,
+                  cursor: 'pointer',
+                }}
+              >
+                Acepto recibir comunicaciones de Jazmina Monteiro con el recurso solicitado y contenido relacionado. Puedo darme de baja cuando quiera.
+              </label>
+            </div>
+            {errors.consentimiento && <p style={errorStyle}>{errors.consentimiento.message}</p>}
+          </div>
+
           {/* Submit */}
           <button
             type="submit"

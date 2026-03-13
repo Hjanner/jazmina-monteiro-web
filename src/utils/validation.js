@@ -15,6 +15,9 @@ export const registroSchema = z.object({
     .min(1, 'Ingresa tu número de teléfono')
     .regex(/^[\d\s\-()+]+$/, 'Solo números, espacios o guiones')
     .refine(v => v.replace(/\D/g, '').length >= 6, 'El número es demasiado corto'),
+  consentimiento: z.literal(true, {
+    errorMap: () => ({ message: 'Debes aceptar para continuar' }),
+  }),
 })
 
 export const modalSchema = z.object({

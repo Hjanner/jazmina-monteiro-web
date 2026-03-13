@@ -156,6 +156,38 @@ export default function RegisterForm() {
         {errors.telefono && <p style={errorStyle}>{errors.telefono.message}</p>}
       </div>
 
+      {/* Consentimiento */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+          <input
+            type="checkbox"
+            {...register('consentimiento')}
+            id="consentimiento-rebuildpro"
+            style={{
+              width: '16px',
+              height: '16px',
+              marginTop: '2px',
+              flexShrink: 0,
+              accentColor: 'var(--gold)',
+              cursor: 'pointer',
+            }}
+          />
+          <label
+            htmlFor="consentimiento-rebuildpro"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '12px',
+              color: 'rgba(255,255,255,0.45)',
+              lineHeight: 1.5,
+              cursor: 'pointer',
+            }}
+          >
+            Acepto recibir comunicaciones de Jazmina Monteiro con información sobre el programa. Puedo darme de baja cuando quiera.
+          </label>
+        </div>
+        {errors.consentimiento && <p style={errorStyle}>{errors.consentimiento.message}</p>}
+      </div>
+
       {/* Submit */}
       <button
         type="submit"
