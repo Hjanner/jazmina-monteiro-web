@@ -104,6 +104,82 @@ Both forms use `registroSchema` from `src/utils/validation.js`:
 - **email:** Valid email format
 - **telefono:** Min 6 digits total
 
+## URL Structure & Examples
+
+### `/rebuildpro` — Masterclass Funnel
+
+**Base (all params use defaults):**
+```
+/rebuildpro
+→ origin: direct | keyword: general | temp: frio | funnel: curso
+```
+
+**Full structure:**
+```
+/rebuildpro
+├── origin: (ig | fb | email | email_newsletter | direct)
+│   ├── keyword: (service | branding | course | automation | general)
+│   │   └── temp: (frio | tibio | caliente)
+│   │       └── funnel: (curso | rebuildpro | otro)
+```
+
+**Example URLs:**
+| Scenario | URL |
+|----------|-----|
+| Instagram traffic, branding service, cold lead | `/rebuildpro?origin=ig&keyword=branding&temp=frio&funnel=curso` |
+| Facebook traffic, automation keyword, warm lead | `/rebuildpro?origin=fb&keyword=automation&temp=tibio&funnel=curso` |
+| Email newsletter, course signup | `/rebuildpro?origin=email_newsletter&keyword=course&temp=tibio&funnel=curso` |
+| Direct traffic (no params) | `/rebuildpro` |
+
+### `/recurso` — Resource Capsule Funnel
+
+**Base (all params use defaults):**
+```
+/recurso
+→ origin: direct | keyword: general | temp: frio | recurso: pdf | funnel: capsula
+```
+
+**Full structure:**
+```
+/recurso
+├── origin: (ig | fb | email | email_newsletter | direct)
+│   ├── keyword: (service | branding | course | automation | general)
+│   │   └── temp: (frio | tibio | caliente)
+│   │       └── recurso: (pdf | video | imagen | link)
+│   │           └── funnel: (capsula | otro)
+```
+
+**Example URLs:**
+| Resource | Scenario | URL |
+|----------|----------|-----|
+| PDF | Instagram story, branding keyword, cold lead | `/recurso?origin=ig&keyword=branding&temp=frio&recurso=pdf&funnel=capsula` |
+| Video | Instagram DM, automation keyword, warm lead | `/recurso?origin=ig&keyword=automation&temp=tibio&recurso=video&funnel=capsula` |
+| Image | Facebook, strategy keyword, hot lead | `/recurso?origin=fb&keyword=strategy&temp=caliente&recurso=imagen&funnel=capsula` |
+| Link | Email, course details, cold lead | `/recurso?origin=email&keyword=course&temp=frio&recurso=link&funnel=capsula` |
+| Default (PDF) | Direct traffic, no params | `/recurso` |
+
+### Parameter Reference
+
+**Common Keywords:**
+- `service` — General consulting service
+- `branding` — Brand strategy
+- `automation` — Automation workflows
+- `course` — Course or training
+- `strategy` — Business strategy
+- `general` — No specific keyword (default)
+
+**Lead Temperature:**
+- `frio` — Cold lead (first contact)
+- `tibio` — Warm lead (some engagement)
+- `caliente` — Hot lead (high intent)
+
+**Traffic Sources:**
+- `ig` — Instagram
+- `fb` — Facebook
+- `email` — Email campaign
+- `email_newsletter` — Email newsletter
+- `direct` — Direct traffic or unknown source (default)
+
 ## Environment Variables
 
 | Variable | Description |
@@ -114,27 +190,7 @@ Both forms use `registroSchema` from `src/utils/validation.js`:
 
 ```bash
 npm run build
-# Output: dist/
-```
-
-## Deploy to Hostinger
-
-1. Run `npm run build`
-2. Upload contents of `dist/` to your public_html directory via FTP or File Manager
-3. Configure `.htaccess` for SPA routing:
-
-```apache
-Options -MultiViews
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.html [QSA,L]
-```
 
 ## Deploy to Vercel / Netlify
 
 Connect your GitHub repo. Both platforms detect Vite automatically.
-
-For Netlify, add a `_redirects` file in `public/`:
-```
-/*  /index.html  200
-```
