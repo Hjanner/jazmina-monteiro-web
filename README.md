@@ -25,10 +25,34 @@ Open [http://localhost:5173](http://localhost:5173)
 
 | Path | Description |
 |------|-------------|
-| `/` | Upcoming landing page (coming soon) |
-| `/rebuildpro` | Rebuild Pro™ masterclass landing + form |
+| `/` | Personal website (light theme) — Hero, About, Services, ForWho, Rebuild Pro method, Testimonials, FAQ |
+| `/coming-soon` | Upcoming page placeholder |
+| `/rebuildpro` | Rebuild Pro™ masterclass landing + form (dark theme) |
 | `/recurso` | Resource capsule form (PDF, video, image, link) |
 | `/gracias` | Thank you page with WhatsApp redirect |
+
+## Design & Components
+
+### Home Page (`/`) — Light Theme (Cream/Gold)
+Uses `.home-page` CSS scope with original b88916e design:
+- **Color Palette:** Cream bg (#FDFAF5), Dark text (#1A0E06), Warm gold (#B8922F)
+- **Components:**
+  - `HomeHero.jsx` — Hero with badge, outline text, float tags
+  - `HomeNavbar.jsx` — Fixed navbar with modal trigger
+  - `Stats.jsx` — 4-column stats grid
+  - `About.jsx` — 2-col image + content section
+  - `Services.jsx` — Service cards grid
+  - `ForWho.jsx` — 3x2 grid with lucide icons
+  - `HomeRebuildProCTA.jsx` — 4-phase method section
+  - `Testimonials.jsx` — 3-col testimonial cards
+  - `FAQ.jsx` — Accordion with smooth height animation
+  - `HomeFooter.jsx` — Footer with nav, socials, copyright
+  - `Modal.jsx` — Contact form modal (triggered by CTA buttons)
+
+### Other Pages
+- `/rebuildpro` — Dark theme, RebuildPro page (unchanged)
+- `/recurso` — Form-focused page (unchanged)
+- `/coming-soon` — Placeholder page (unchanged)
 
 ## Forms & Leads
 

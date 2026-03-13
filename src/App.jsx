@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
 import Upcoming from './pages/Upcoming'
 import RebuildPro from './pages/RebuildPro'
 import ThankYou from './pages/ThankYou'
@@ -8,7 +9,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Upcoming />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/coming-soon" element={<Upcoming />} />
         <Route path="/rebuildpro" element={<RebuildPro />} />
         <Route path="/recurso" element={<Recurso />} />
         <Route path="/gracias" element={<ThankYou />} />
